@@ -12,7 +12,7 @@ Certifique-se de ter os seguintes pré-requisitos instalados em sua máquina:
 1. **Clone o Repositório:**
    ```bash
    git clone https://github.com/silas97/desafio-backend-workshop-api.git
-   cd backend
+   cd desafio-backend-workshop-api
    ```
 
 2. **Instalação de Dependências:**
