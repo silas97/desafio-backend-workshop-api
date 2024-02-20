@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Colaborador {
+  id             Int              @id @default(autoincrement())
+  nome           String
+  ColaboradorAta ColaboradorAta[]
+}
+
+model Workshop {
+  id             Int      @id @default(autoincrement())
+  nome           String
+  dataRealizacao DateTime
+  descricao      String
+  Ata            Ata[]
+}
+
+model Ata {
+  id             Int              @id @default(autoincrement())
+  workshopId     Int
+  workshop       Workshop         @relation(fields: [workshopId], references: [id])
+  ColaboradorAta ColaboradorAta[]
+}
+
+model ColaboradorAta {
+  id            Int         @id @default(autoincrement())
+  colaboradorId Int
+  ataId         Int
+  colaborador   Colaborador @relation(fields: [colaboradorId], references: [id])
+  ata           Ata         @relation(fields: [ataId], references: [id])
+}
